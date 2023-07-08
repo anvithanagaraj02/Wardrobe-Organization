@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History</title>
+  <style>
+    .image-history-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .image-history-box {
+      border: 3px solid #292322;
+      border-radius: 15px;
+      padding: 10px;
+      width: 220px;
+      height: 320px;
+      text-align: center;
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+       justify-content: center;
+    }
+
+    .image-history-img {
+      border-radius: 50%;
+      object-fit:fill;
+      width: 150px;
+      height: 150px;
+       margin-bottom: 10px;
+    }
+
+    .image-history-details {
+      margin-top: 10px;
+      font-family: "Arial", sans-serif;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .image-history-details p.date {
+      color: #11212d;
+      font-size: 14px;
+      font-weight: bold;
+       margin: 0;
+    }
+
+    .image-history-details p.occasion {
+      color: #11212d;
+      font-size: 12px;
+       margin: 0;
+    }
+    h1 {
+      text-align: center;
+      font-family: "Arial", sans-serif;
+    }
+
+    h1, p {
+      font-family: "Arial", sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+{{#if imageHistories.length}}
+  <h1>Image History</h1>
+  <div class="image-history-container">
+    {{#each imageHistories}}
+      <div class="image-history-box">
+        <img src="{{this.imageUrl}}" alt="Image" class="image-history-img">
+        <div class="image-history-details">
+          <p class="date">Date: {{this.date}}</p>
+          <p class="occasion">Occasion: {{this.occasion}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{else}}
+  <h1>No image histories found</h1>
+{{/if}}
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins');
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 2em;
+      color: #fff;
+      user-select: none;
+    }
+
+    .navigation a {
+      position: relative;
+      font-size: 1.1em;
+      color: black;
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 20px;
+      padding: 6px 15px;
+      transition: .5s;
+    }
+
+    .navigation a:hover,
+    .navigation a.active {
+      color: #333;
+    }
+
+    .navigation a span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      border-radius: 30px;
+      z-index: -1;
+      transform: scale(0);
+      opacity: 0;
+      transition: .5s;
+    }
+
+    .navigation a:hover span,
+    .navigation a.active span {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .parallax {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      background: url('https://cdn2.vectorstock.com/i/1000x1000/35/91/background-with-female-fashion-clothes-vector-8823591.jpg') no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    #text {
+      position: relative;
+      font-size: 5em;
+      color: #1b283a;
+      text-shadow: 2px 4px 5px #f9f9f9;
+      white-space: nowrap;
+      line-height: 0.9em;
+      opacity: 0;
+      animation: slideIn 1s forwards;
+    }
+
+    #text::after {
+      content: "\A";
+      white-space: pre;
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    #organization {
+      opacity: 0;
+      animation: fadeIn 3s forwards;
+      transition: opacity 0.5s ease-in-out;
+      margin-top: 20px;
+      font-weight: 800;
+      font-size: 5em;
+      position: relative;
+      text-align: left;
+      padding: 6px;
+    }
+
+    .parallax:hover #organization {
+      opacity: 1;
+    }
+
+   
+@keyframes fadeIn {
+0% {
+opacity: 0;
+}
+100% {
+opacity: 1;
+}
+}
+</style>
+
+</head>
+<body>
+  <header>
+    <nav class="navigation">
+      <a href="#" class="active">Home <span></span></a>
+      <a href="/loginorsignup">Get Started<span></span></a>
+      <a href="/contact">Contact <span></span></a>
+    </nav>
+  </header>
+  <section class="parallax">
+    <div>
+      <h2 id="text">Wardrobe Organization</h2>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <h1>College</h1>
+    <div class="container">
+      <div class="row">
+        {{#each records}}
+        <div class="col-md-4">
+          <img src="/images/{{ imagename }}" alt="Image" style="width: 200px; height: 200px;">
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    <p>{{ success }}</p>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Images - Traditional Category</title>
+  <style>
+    .image-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-item {
+      margin: 10px;
+      text-align: center;
+    }
+
+    .image-item img {
+      height: 200px;
+      width: 200px;
+    }
+
+    .dropdown {
+      margin-top: 10px;
+    }
+
+    .text-input {
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Casual outfits</h1>
+
+  {{#if images}}
+    <div class="image-container">
+      {{#each images}}
+        <div class="image-item">
+          <img src="{{this.url}}" alt="{{this.imageId}}">
+          <div class="dropdown">
+            <label for="history-select-{{this.imageId}}">Add to history:</label>
+            <select id="history-select-{{this.imageId}}" onchange="handleHistoryOption('{{this.url}}', this)">
+              <option value="">Select</option>
+              <option value="both">Both</option>
+            </select>
+            <div id="date-input-container-{{this.imageId}}" class="text-input" style="display: none;">
+              <label for="date-input-{{this.imageId}}">Date:</label>
+              <input type="text" id="date-input-{{this.imageId}}" placeholder="YYYY-MM-DD">
+            </div>
+            <div id="occasion-input-container-{{this.imageId}}" class="text-input" style="display: none;">
+              <label for="occasion-input-{{this.imageId}}">Occasion:</label>
+              <input type="text" id="occasion-input-{{this.imageId}}" placeholder="Occasion">
+            </div>
+            <button id="upload-button-{{this.imageId}}" style="display: none;" onclick="uploadToDatabase('{{this.url}}', '{{this.imageId}}')">Upload</button>
+            <p id="upload-message-{{this.imageId}}" style="display: none;"></p>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <p>No images found for the category.</p>
+  {{/if}}
+
+  <script>
+    function handleHistoryOption(imageUrl, selectElement) {
+      const imageId = selectElement.id.split('-')[2];
+      const dateInputContainer = document.getElementById('date-input-container-' + imageId);
+      const occasionInputContainer = document.getElementById('occasion-input-container-' + imageId);
+      const uploadButton = document.getElementById('upload-button-' + imageId);
+      const optionValue = selectElement.value;
+
+      if (optionValue === 'both') {
+        dateInputContainer.style.display = 'block';
+        occasionInputContainer.style.display = 'block';
+        uploadButton.style.display = 'block';
+      } else {
+        dateInputContainer.style.display = 'none';
+        occasionInputContainer.style.display = 'none';
+        uploadButton.style.display = 'none';
+      }
+    }
+
+    function uploadToDatabase(imageUrl, imageId) {
+      const date = document.getElementById('date-input-' + imageId).value;
+      const occasion = document.getElementById('occasion-input-' + imageId).value;
+      const data = { imageUrl, date, occasion };
+
+      // To store the data in the database
+      fetch('/add-to-history', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(response => {
+          if (response.ok) {
+            console.log('Data uploaded successfully');
+            document.getElementById('upload-message-' + imageId).textContent = 'Data saved successfully';
+            document.getElementById('upload-message-' + imageId).style.display = 'block';
+          } else {
+            console.log('Failed to upload data');
+          }
+        })
+        .catch(error => {
+          console.log('Error:', error);
+        });
+    }
+  </script>
+</body>
+</html>

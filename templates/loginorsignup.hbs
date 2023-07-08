@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Wardrobe Organization</title>
+	<style>
+		body {
+   margin: 0;
+   padding: 0;
+   font-family: Arial, sans-serif;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: url('https://weizter.co.za/images/easyblog_articles/143/b2ap3_large_Weizter_Open_Wardrobes_3.webp') no-repeat;
+   background-size: cover;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0;
+}
+
+marquee {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+main {
+  padding: 40px 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    align-items: center;
+}
+
+.option {
+  width: 250px;
+  text-align: center;
+  margin: 0 20px;
+  box-shadow: 0px 0px 10px #ddd;
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.option:hover {
+  transform: translateY(-10px);
+}
+
+h2 {
+  margin-top: 0;
+}
+
+p {
+  margin: 10px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0px 0px 10px #ddd;
+}
+	</style>
+  </head>
+  <body>
+   
+    <main>
+      <div class="container">
+
+        <div class="option">
+          <h2>Sign In</h2>
+          <p>You a new user?</p>
+          <a href="/signup" class="btn">Sign In</a>
+        </div>
+        <div class="option">
+          <h2>Login</h2>
+          <p>Already a user?</p>
+          <a href="/login" class="btn">Login</a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

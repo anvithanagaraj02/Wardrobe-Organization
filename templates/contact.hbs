@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Details</title>
+  <style>
+    body {
+  background-color: #f4f4f4;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: url('https://img.freepik.com/free-photo/top-view-blue-monday-concept-composition-with-telephone_23-2149139103.jpg') no-repeat;
+  background-size: cover;
+
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  background: transparent;
+  
+}
+
+.owner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  background-color: #fffdfd;
+  color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  animation: fade-in 1s ease-in-out;
+}
+
+.content {
+  text-align: center;
+  color: black;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="owner owner1">
+      <div class="content">
+        <h2>Ananya Prabhu</h2>
+        <p>Email: ananyaprabhu484@gmail.com</p>
+        <p>Phone: 7411434887</p>
+      </div>
+    </div>
+    <div class="owner owner2">
+      <div class="content">
+        <h2>Anvitha N</h2>
+        <p>Email: anvithanagraj@gmail.com{{owner2.email}}</p>
+        <p>Phone: 9876543210{{owner2.phone}}</p>
+      </div>
+    </div>
+    <div class="owner owner3">
+      <div class="content">
+        <h2> Ashwini P{{owner3.name}}</h2>
+        <p>Email: ashwinip@gmail.com{{owner3.email}}</p>
+        <p>Phone: 7890654321{{owner3.phone}}</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+  <script>
+    const owner1 = {
+  name: "Ananya Prabhu",
+  email: "ananyaprabhu484@gmail.com",
+  phone: "7411434887"
+};
+
+const owner2 = {
+  name: "Anvitha N",
+  email: "anvithanagraj@gmail.com",
+  phone: "9876543210"
+};
+
+const owner3 = {
+  name: "Ashwini P",
+  email: "ashwinip@gmail.com",
+  phone: "7890654321"
+};
+
+const template = Handlebars.compile(document.getElementById("template").innerHTML);
+document.getElementById("content").innerHTML = template({ owner1, owner2, owner3 });
+
+  </script>
+</body>
+</html>
